@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Calculator — Pynexia Training</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-container">
+    <section class="calculator" aria-label="Interactive Calculator">
+      <header class="calc-header">
+        <span class="brand-badge">PYNEXIA</span>
+      </header>
+
+      <div class="display-panel" role="status" aria-live="polite">
+        <div id="expression-display" class="expression-display" aria-label="Previous expression"></div>
+        <div id="main-display" class="main-display" aria-label="Current value">0</div>
+      </div>
+
+      <div class="keypad" role="group" aria-label="Calculator keypad">
+        <button type="button" class="btn btn-action span-2" data-action="clear" aria-label="All Clear">AC</button>
+        <button type="button" class="btn btn-action" data-action="backspace" aria-label="Backspace">⌫</button>
+        <button type="button" class="btn btn-operator" data-operator="÷" aria-label="Divide">÷</button>
+
+        <button type="button" class="btn btn-digit" data-digit="7">7</button>
+        <button type="button" class="btn btn-digit" data-digit="8">8</button>
+        <button type="button" class="btn btn-digit" data-digit="9">9</button>
+        <button type="button" class="btn btn-operator" data-operator="×" aria-label="Multiply">×</button>
+
+        <button type="button" class="btn btn-digit" data-digit="4">4</button>
+        <button type="button" class="btn btn-digit" data-digit="5">5</button>
+        <button type="button" class="btn btn-digit" data-digit="6">6</button>
+        <button type="button" class="btn btn-operator" data-operator="−" aria-label="Subtract">−</button>
+
+        <button type="button" class="btn btn-digit" data-digit="1">1</button>
+        <button type="button" class="btn btn-digit" data-digit="2">2</button>
+        <button type="button" class="btn btn-digit" data-digit="3">3</button>
+        <button type="button" class="btn btn-operator" data-operator="+" aria-label="Add">+</button>
+
+        <button type="button" class="btn btn-digit span-2" data-digit="0">0</button>
+        <button type="button" class="btn btn-digit" data-decimal="." aria-label="Decimal point">.</button>
+        <button type="button" class="btn btn-equals" data-action="equals" aria-label="Equals">=</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

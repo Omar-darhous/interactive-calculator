@@ -1,0 +1,274 @@
+:root {
+  --bg-page: #070d19;
+  --bg-panel: #0f172a;
+  --bg-panel-border: #1e293b;
+  --bg-display: #091020;
+  --bg-digit: #1e293b;
+  --bg-digit-hover: #283548;
+  --bg-digit-active: #151e2e;
+  --bg-action: #334155;
+  --bg-action-hover: #475569;
+  --bg-action-active: #1e293b;
+  --teal-primary: #14b8a6;
+  --teal-hover: #2dd4bf;
+  --teal-active: #0d9488;
+  --teal-surface: rgba(20, 184, 166, 0.16);
+  --teal-border: rgba(45, 212, 191, 0.35);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-error: #fb7185;
+  --focus-ring: #5eead4;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: radial-gradient(circle at top, #132238 0%, var(--bg-page) 70%);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 380px;
+}
+
+.calculator {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--bg-panel-border);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow:
+    0 24px 48px -12px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.calc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0 0.25rem;
+}
+
+.brand-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--teal-hover);
+}
+
+.display-panel {
+  background-color: var(--bg-display);
+  border: 1px solid var(--bg-panel-border);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  min-height: 108px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  overflow: hidden;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+.expression-display {
+  min-height: 1.35rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-align: right;
+  width: 100%;
+  max-width: 100%;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+
+.main-display {
+  font-size: 2.35rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  text-align: right;
+  width: 100%;
+  max-width: 100%;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.15s ease, font-size 0.15s ease;
+}
+
+.main-display.is-long {
+  font-size: 1.65rem;
+}
+
+.main-display.is-error {
+  color: var(--text-error);
+  font-size: 1.45rem;
+  font-weight: 600;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  min-height: 60px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--text-primary);
+  background-color: var(--bg-digit);
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.14s ease,
+    border-color 0.14s ease,
+    transform 0.08s ease,
+    box-shadow 0.14s ease,
+    color 0.14s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
+}
+
+.btn.span-2 {
+  grid-column: span 2;
+}
+
+/* Hover states */
+.btn-digit:hover {
+  background-color: var(--bg-digit-hover);
+  border-color: rgba(148, 163, 184, 0.25);
+}
+
+.btn-action {
+  background-color: var(--bg-action);
+  color: #e2e8f0;
+}
+
+.btn-action:hover {
+  background-color: var(--bg-action-hover);
+  border-color: rgba(226, 232, 240, 0.25);
+}
+
+.btn-operator {
+  background-color: var(--teal-surface);
+  color: var(--teal-hover);
+  border-color: var(--teal-border);
+  font-size: 1.45rem;
+}
+
+.btn-operator:hover {
+  background-color: rgba(20, 184, 166, 0.28);
+  border-color: var(--teal-hover);
+  color: #ffffff;
+}
+
+.btn-operator.is-active {
+  background-color: var(--teal-primary);
+  color: #042f2e;
+  border-color: var(--teal-hover);
+}
+
+.btn-equals {
+  background-color: var(--teal-primary);
+  color: #042f2e;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.btn-equals:hover {
+  background-color: var(--teal-hover);
+}
+
+/* Pressed states */
+.btn:active,
+.btn.is-pressed {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.btn-digit:active,
+.btn-digit.is-pressed {
+  background-color: var(--bg-digit-active);
+}
+
+.btn-action:active,
+.btn-action.is-pressed {
+  background-color: var(--bg-action-active);
+}
+
+.btn-operator:active,
+.btn-operator.is-pressed,
+.btn-equals:active,
+.btn-equals.is-pressed {
+  background-color: var(--teal-active);
+  color: #ffffff;
+}
+
+/* Keyboard focus state */
+.btn:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 420px) {
+  body {
+    padding: 0.75rem;
+  }
+
+  .calculator {
+    padding: 1.15rem;
+    border-radius: 20px;
+  }
+
+  .display-panel {
+    min-height: 96px;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .main-display {
+    font-size: 2rem;
+  }
+
+  .main-display.is-long {
+    font-size: 1.4rem;
+  }
+
+  .keypad {
+    gap: 0.6rem;
+  }
+
+  .btn {
+    min-height: 54px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+  }
+}
+
